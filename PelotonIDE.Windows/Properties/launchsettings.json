@@ -1,0 +1,10 @@
+{
+  "profiles": {
+	"PelotonIDE.Windows (Package)": {
+	  "commandName": "MsixPackage"
+	},
+	"PelotonIDE.Windows (Unpackaged)": {
+	  "commandName": "Project"
+	}
+  }
+}

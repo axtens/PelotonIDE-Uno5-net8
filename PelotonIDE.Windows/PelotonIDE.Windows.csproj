@@ -1,0 +1,91 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetPlatformMinVersion>10</TargetPlatformMinVersion>
+		<TargetPlatformVersion>8</TargetPlatformVersion>
+		<RootNamespace>UnoWinUIQuickStart</RootNamespace>
+		<Platforms>x86;x64;arm64</Platforms>
+		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+		<PublishProfile>win-$(Platform).pubxml</PublishProfile>
+		<UseWinUI>true</UseWinUI>
+		<EnableMsixTooling>true</EnableMsixTooling>
+		<SelfContained>true</SelfContained>
+	</PropertyGroup>
+    <PropertyGroup>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+	<PropertyGroup>
+		<!-- Bundles the WinAppSDK binaries (Uncomment for unpackaged builds) -->
+		<!-- <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained> -->
+		<!-- This bundles the .NET Core libraries (Uncomment for packaged builds)  -->
+		<SelfContained>true</SelfContained>
+		<UseWPF>False</UseWPF>
+		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
+		<AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+		<AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
+		<GenerateTestArtifacts>True</GenerateTestArtifacts>
+		<AppxBundle>Always</AppxBundle>
+		<AppxBundlePlatforms>x64</AppxBundlePlatforms>
+		<AppInstallerUri>file:///c:/temp/pi</AppInstallerUri>
+		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+		<PackageCertificateThumbprint>2CB45DDA66A114860391D05C4132C58DD59D9FEB</PackageCertificateThumbprint>
+		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+		<AppxPackageSigningTimestampServerUrl>https://timestamp.comodoca.com</AppxPackageSigningTimestampServerUrl>
+		<Authors>Bruce Axtens, Hakob Chalikyan</Authors>
+		<Company>The Peloton Project</Company>
+		<Product>PelotonIDE</Product>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="Images\**" />
+		<None Remove="Peloton_Logo_MarkOnly_TransparentBack-lighter.ico" />
+		<Manifest Include="$(ApplicationManifest)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Uno.Resizetizer" Version="1.4.10">
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		  <PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Uno.WinUI" Version="5.2.175" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240607001" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Uno.Extensions.Configuration" Version="4.1.24" />
+		<PackageReference Include="Uno.Extensions.Http" Version="4.1.24" />
+		<PackageReference Include="Uno.Extensions.Http.Refit" Version="4.1.24" />
+		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="3.0.19" />
+		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="4.1.24" />
+		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="4.1.24" />
+		<PackageReference Include="Uno.Material.WinUI" Version="5.0.13" />
+		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="6.0.24" />
+		<PackageReference Include="Uno.Toolkit.WinUI" Version="6.0.24" />
+		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="3.0.19" />
+		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="3.0.19" />
+		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="3.0.19" />
+		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="3.0.19" />
+		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="3.0.19" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+		<PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="4.1.1" />
+		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="5.2.175" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\PelotonIDE\PelotonIDE.csproj" />
+		<ProjectReference Include="..\PelotonIDE.DataContracts\PelotonIDE.DataContracts.csproj" />
+	</ItemGroup>
+
+	<Import Project="..\PelotonIDE.Base\base.props" />
+
+	<ItemGroup>
+	  <SourceGeneratorInput Remove="PelotonIDE.Windows_TemporaryKey.pfx" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="EncodingChecker">
+	    <HintPath>..\..\EncodingChecker\bin\Debug\net8.0\EncodingChecker.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+</Project>

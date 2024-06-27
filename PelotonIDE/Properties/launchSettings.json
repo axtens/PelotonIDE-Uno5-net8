@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PelotonIDE": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
